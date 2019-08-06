@@ -12,13 +12,14 @@ import qs from 'qs';
 Vue.use(VueRouter);
 Vue.use(iView);
 
-axios.defaults.headers = {
-  'Authorization': '',
-};
-
 Vue.prototype.$http = axios;
 Vue.prototype.$_ = lodash;
 Vue.prototype.$qs = qs;
+Vue.prototype.getHeader = () => ({
+  headers: {
+    Authorization: sessionStorage.getItem('token')
+  }
+});
 
 // 路由配置
 const router = new VueRouter({

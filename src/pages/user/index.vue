@@ -112,7 +112,7 @@
           schoolCode: '1101053001',
           start: (this.model.page - 1) * this.model.size,
           limit: this.model.size
-        }));
+        }), this.getHeader());
       },
       onPageChange(val) {
         this.model.page = val;
