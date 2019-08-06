@@ -1,6 +1,6 @@
-# iView-project
+# Starter of Vue and iView
 
-This project is build for Vue.js 2 + vue-router + webpack2 + iView 3, just install and run.
+This project is build for Vue.js 2 + vue-router + iView 3 + ...
 
 ## Install
 ```bush
@@ -10,8 +10,6 @@ npm install
 ## Run
 ### Development
 ```bush
-// For the first time, run init to create index.html
-npm run init
 npm run dev
 ```
 ### Production(Build)
