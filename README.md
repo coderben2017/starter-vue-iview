@@ -1,6 +1,6 @@
-# starter-vue-iview
+# Starter of Vue and iView
 
-This project is build for Vue.js 2 + vue-router + webpack2 + iView 3, just install and run.
+This project is build for Vue.js 2 + vue-router + iView 3 + ...
 
 ## Install
 ```bush
