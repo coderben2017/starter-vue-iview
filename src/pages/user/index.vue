@@ -1,10 +1,16 @@
 <template>
     <Row>
+        <Row style="margin-bottom: 5px">
+            <Col :xs="24" :lg="{span: 4, offset: 20}">
+                <Button type="error" class="fload: right" @click="onDeleteAll">删除选中</Button>
+            </Col>
+        </Row>
         <Col :xs="24" :lg="24">
-            <Table width="1400" border :columns="columns" :data="tableData"></Table>
+            <Table width="1400" border :columns="columns" :data="tableData" ref="table"></Table>
             <Row type="flex" justify="end" style="margin-top: 10px">
                 <Page :current="model.page" :total="total" :page-size="model.size" :page-size-opts="[10,20,50,100]"
-                      @on-change="onPageChange" @on-page-size-change="onPageSizeChange" show-total show-elevator show-sizer
+                      show-total show-elevator show-sizer
+                      @on-change="onPageChange" @on-page-size-change="onPageSizeChange"
                 ></Page>
             </Row>
         </Col>
@@ -17,8 +23,13 @@
       return {
         columns: [
           {
+            type: 'selection',
+            width: 60,
+            align: 'center',
+            fixed: 'left'
+          },
+          {
             title: '标题',
-            fixed: 'left',
             minWidth: 250,
             render: (h, params) => h('span', params.row.topic)
           },
@@ -90,6 +101,7 @@
           }
         ],
         tableData: [],
+        total: 0,
         model: {
           page: 1,
           size: 10
@@ -97,22 +109,18 @@
       }
     },
     mounted() {
-      this.getList().then(({data}) => {
-        this.tableData = data.data;
-      })
-    },
-    computed: {
-      total() {
-        return this.tableData.length
-      }
+      this.getList();
     },
     methods: {
       getList() {
-        return this.$http.get('http://ms.do-ok.com:18030/api/cycleshow/v1/query?' + this.$qs.stringify({
-          schoolCode: '1101053001',
+        this.$http.get('http://ms.do-ok.com:18030/api/cycleshow/v1/query?' + this.$qs.stringify({
+          schoolCode: this.getSchoolCode(),
           start: (this.model.page - 1) * this.model.size,
           limit: this.model.size
-        }), this.getHeader());
+        }), this.getHeader()).then(({data}) => {
+          this.tableData = data.data;
+          this.total = data.total;
+        });
       },
       onPageChange(val) {
         this.model.page = val;
@@ -122,22 +130,25 @@
         this.model.size = val;
         this.getList();
       },
+      onDeleteAll() {
+        const idStr = this.$refs.table.getSelection().map(item => item.id).join();
+        if (idStr) {
+          console.log(idStr);
+          this.$Message.success('删除成功');
+          this.$refs.table.selectAll(false);
+        }
+      },
       show (index) {
         this.$Modal.info({
           title: 'User Info',
           content: `
             Param: ${window.location.href.split('?')[1].split('=')[1]}
-            <br>
-            Name：${this.data6[index].name}
-            <br>
-            Age：${this.data6[index].age}
-            <br>
-            Address：${this.data6[index].address}
+            Topic：${this.tableData[index].topic}
           `
         })
       },
       remove (index) {
-        this.data6.splice(index, 1);
+        this.tableData.splice(index, 1);
       },
     }
   }

@@ -15,11 +15,8 @@ Vue.use(iView);
 Vue.prototype.$http = axios;
 Vue.prototype.$_ = lodash;
 Vue.prototype.$qs = qs;
-Vue.prototype.getHeader = () => ({
-  headers: {
-    Authorization: sessionStorage.getItem('token')
-  }
-});
+Vue.prototype.getHeader = () => ({headers: {Authorization: sessionStorage.getItem('token')}});
+Vue.prototype.getSchoolCode = () => sessionStorage.getItem('schoolCode');
 
 // 路由配置
 const router = new VueRouter({
