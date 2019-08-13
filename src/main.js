@@ -29,7 +29,7 @@ axios.interceptors.response.use(response => {
 });
 
 Vue.prototype.commonUrl = 'http://ms.do-ok.com:18010';
-Vue.prototype.dataCenterUrl = 'http://ms.do-ok.com:1800';
+Vue.prototype.dataCenterUrl = 'http://ms.do-ok.com:18000';
 Vue.prototype.$http = axios;
 Vue.prototype.$_ = lodash;
 Vue.prototype.$qs = qs;
