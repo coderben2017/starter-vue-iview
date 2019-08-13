@@ -1,16 +1,13 @@
 {
-  "name": "starter-vue-iview",
+  "name": "data-center-2019",
   "version": "1.0.0",
   "description": "A base project with Vue.js2、Vue-Router、iView3 and so on.",
   "main": "index.js",
   "scripts": {
     "init": "webpack --progress --config webpack.dev.config.js",
+    "start": "npm run dev",
     "dev": "webpack-dev-server --content-base ./ --open --inline --hot --compress --history-api-fallback --config webpack.dev.config.js",
     "build": "webpack --progress --hide-modules --config webpack.prod.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coderben2017/starter-vue-iview.git"
   },
   "author": "CoderBen",
   "license": "MIT",
