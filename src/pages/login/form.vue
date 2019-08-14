@@ -26,8 +26,8 @@
     data () {
       return {
         form: {
-          username: 'admui',
-          password: '123456'
+          username: '',
+          password: ''
         },
         rules: {
           username: [

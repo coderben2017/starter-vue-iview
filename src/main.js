@@ -18,13 +18,11 @@ axios.interceptors.response.use(response => {
     Message.error({content: '未获取到数据'});
     return Promise.reject(new Error('response is null'));
   }
-
   const {code, msg} = response.data;
   if (typeof code === 'number' && code !== 0) { // 获取menu接口无code属性
     Message.error({content: msg.replace('异常', '繁忙')});
     return Promise.reject(new Error(msg));
   }
-
   return response;
 }, error => {
   Message.error({content: error.message});
