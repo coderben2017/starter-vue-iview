@@ -21,6 +21,6 @@
     }
 </script>
 
-<style scoped>
+<style>
     @import 'app.css';
 </style>
