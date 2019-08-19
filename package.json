@@ -6,7 +6,7 @@
   "scripts": {
     "init": "webpack --progress --config webpack.dev.config.js",
     "start": "npm run dev",
-    "dev": "webpack-dev-server --content-base ./ --open --inline --hot --compress --history-api-fallback --config webpack.dev.config.js",
+    "dev": "webpack-dev-server --content-base ./ --open --inline --hot --compress --history-api-fallback --config webpack.dev.config.js --port=2019",
     "build": "webpack --progress --hide-modules --config webpack.prod.config.js"
   },
   "author": "CoderBen",
