@@ -104,7 +104,7 @@
         this.$http.get(this.commonUrl + '/api/menu/v1/getMenuListByUserId?' + this.$qs.stringify({
           positionId: positionId,
           userId: userId,
-          projectName: 'terminal'
+          projectName: 'system'
         }), this.getHeader()).then(({data}) => {
           sessionStorage.setItem('menus', JSON.stringify(data));
           this.$router.replace('/index/home');

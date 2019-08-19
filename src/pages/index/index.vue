@@ -6,25 +6,10 @@
                     <div class="layout-logo">
                         <img src="../../assets/images/logo.png" alt="logo">
                     </div>
-<!--                    <div class="layout-nav">-->
-<!--                        <MenuItem name="1">-->
-<!--                            <Icon type="ios-navigate"></Icon>-->
-<!--                            Item 1-->
-<!--                        </MenuItem>-->
-<!--                        <MenuItem name="2">-->
-<!--                            <Icon type="ios-keypad"></Icon>-->
-<!--                            Item 2-->
-<!--                        </MenuItem>-->
-<!--                        <MenuItem name="3">-->
-<!--                            <Icon type="ios-analytics"></Icon>-->
-<!--                            Item 3-->
-<!--                        </MenuItem>-->
-<!--                        <MenuItem name="4">-->
-<!--                            <Icon type="ios-paper"></Icon>-->
-<!--                            Item 4-->
-<!--                        </MenuItem>-->
-<!--                    </div>-->
-                    <div class="operation">
+                    <div class="layout-nav">
+                        <span v-for="menu1 in menus" :key="menu1.id" @click="switchMenu(menu1)">
+                            <Icon :custom="menu1.icon"></Icon> {{menu1.text}}
+                        </span>
                         <Icon type="md-log-out" color="#fff" size="26" title="退出登录" @click="handleLogout"/>
                     </div>
                 </Menu>
@@ -32,7 +17,12 @@
             <Layout>
                 <Sider :style="{background: '#fff', height: '92vh'}">
                     <Menu theme="light" width="auto">
-                        <MenuGroup v-if="menu1.children" v-for="menu2 in menu1.children" :key="menu2.id" :title="menu2.text">
+                        <MenuGroup
+                            v-if="currentMenu1.children"
+                            v-for="menu2 in currentMenu1.children"
+                            :key="menu2.id"
+                            :title="menu2.text"
+                        >
                             <div v-for="menu3 in menu2.children" :key="menu3.id">
                                 <Submenu v-if="menu3.children" :name="menu3.id">
                                     <template slot="title">
@@ -75,13 +65,17 @@
   export default {
     data() {
       return {
-        menu1: []
+        menus: [],
+        currentMenu1: {id: '', text: '', children: []}
       }
     },
     mounted() {
       const menus = JSON.parse(sessionStorage.getItem('menus'));
-      if (menus.length && menus.length > 0) {
-        this.menu1 = menus[0];
+      if (menus && menus.length) {
+        this.menus = menus;
+        if (menus.length && menus.length > 0) {
+          this.currentMenu1 = menus[0];
+        }
       }
     },
     methods: {
@@ -93,6 +87,9 @@
             this.$router.replace(`/login?sc=${sessionStorage.getItem('schoolCode')}`);
           }
         })
+      },
+      switchMenu(menu1) {
+        this.currentMenu1 = menu1;
       }
     }
   }
