@@ -36,7 +36,7 @@
       sessionStorage.setItem('schoolCode', window.location.href.split('=')[1]);
     },
     methods: {
-      handleSubmit ({username, password}) {
+      handleSubmit: function({username, password}) {
         const schoolCode = sessionStorage.getItem('schoolCode');
         if (!schoolCode || schoolCode === 'undefined') {
           this.$Message.warning('未检测到schoolCode，请检查地址栏');
@@ -99,7 +99,7 @@
           }
         });
       },
-      getMenuByPositionId(positionId, userId) {
+      getMenuByPositionId: function(positionId, userId) {
         sessionStorage.setItem('positionId', positionId);
         this.$http.get(this.commonUrl + '/api/menu/v1/getMenuListByUserId?' + this.$qs.stringify({
           positionId: positionId,

@@ -10,7 +10,7 @@
                         <div
                             v-for="menu1 in menus"
                             :key="menu1.id"
-                            :class="menu1.id === currentMenu1.id ? 'active' : ''"
+                            :class="{'active': menu1.id === currentMenu1.id}"
                             @click="switchMenu(menu1)"
                         >
                             <Icon :custom="menu1.icon"></Icon> {{menu1.text}}
@@ -21,7 +21,7 @@
             </Header>
             <Layout>
                 <Sider :style="{background: '#fff', height: '92vh'}">
-                    <Menu theme="light" width="auto">
+                    <Menu theme="light" width="auto" :accordion="true" :active-name="activeName">
                         <MenuGroup
                             v-if="currentMenu1.children"
                             v-for="menu2 in currentMenu1.children"
@@ -83,8 +83,13 @@
         }
       }
     },
+    computed: {
+      activeName: function () {
+        return this.$store.state.menuStore.activeMenuId;
+      }
+    },
     methods: {
-      handleLogout() {
+      handleLogout: function() {
         this.$Modal.confirm({
           title: '系统提示',
           content: '确定要退出登录吗？',
@@ -93,7 +98,7 @@
           }
         })
       },
-      switchMenu(menu1) {
+      switchMenu: function(menu1) {
         this.currentMenu1 = menu1;
       }
     }

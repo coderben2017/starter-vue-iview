@@ -99,7 +99,7 @@ const routers = [
   },
   {
     path: '*',
-    component: resolve => require(['./pages/404'], resolve)
+    component: resolve => require(['./pages/404/404'], resolve)
   }
 ];
 

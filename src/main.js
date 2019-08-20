@@ -7,11 +7,14 @@ import axios from 'axios';
 import qs from 'qs';
 import Routers from './router';
 import App from './app.vue';
+import Vuex from 'vuex';
+import store from './store'
 
 Vue.config.devtools = process.env.NODE_ENV === 'development';
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(iView);
+Vue.use(Vuex);
 
 axios.interceptors.response.use(response => {
   if (!response.data) {
@@ -55,6 +58,7 @@ router.afterEach((to, from, next) => {
 
 new Vue({
   el: '#app',
-  router: router,
+  router,
+  store,
   render: h => h(App)
 });

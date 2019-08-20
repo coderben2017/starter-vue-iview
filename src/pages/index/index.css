@@ -34,10 +34,6 @@
     text-align: center;
 }
 
-.layout-nav .active {
-    background-color: #2b85e4;
-}
-
 .layout-nav .ivu-icon-md-log-out {
     float: right;
     margin-top: 20px;
