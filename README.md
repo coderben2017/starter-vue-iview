@@ -1,6 +1,7 @@
 # Starter of Vue and iView
 
-This project is build for Vue.js 2 + vue-router + iView 3 + Vuex 3 ...
+This project is build for Vue.js(2.5) + vue-router(2.8) + 
+iView(3.4) + Vuex(3.1) ...
 
 ## Install
 ```bush
