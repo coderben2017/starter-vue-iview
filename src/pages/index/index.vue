@@ -4,7 +4,7 @@
             <Header>
                 <Menu mode="horizontal" theme="dark" active-name="1">
                     <div class="layout-logo">
-                        <img src="../../assets/images/logo.png" alt="logo">
+                        <img src="../../assets/images/logo.png" alt="logo" @click="handleNavigateToHome">
                     </div>
                     <div class="layout-nav">
                         <div
@@ -89,6 +89,10 @@
       }
     },
     methods: {
+      handleNavigateToHome: function() {
+        this.$router.replace('/index/home');
+        this.$store.commit('setActiveMenuId', '');
+      },
       handleLogout: function() {
         this.$Modal.confirm({
           title: '系统提示',
