@@ -7,9 +7,14 @@
                         <img src="../../assets/images/logo.png" alt="logo">
                     </div>
                     <div class="layout-nav">
-                        <span v-for="menu1 in menus" :key="menu1.id" @click="switchMenu(menu1)">
+                        <div
+                            v-for="menu1 in menus"
+                            :key="menu1.id"
+                            :class="menu1.id === currentMenu1.id ? 'active' : ''"
+                            @click="switchMenu(menu1)"
+                        >
                             <Icon :custom="menu1.icon"></Icon> {{menu1.text}}
-                        </span>
+                        </div>
                         <Icon type="md-log-out" color="#fff" size="26" title="退出登录" @click="handleLogout"/>
                     </div>
                 </Menu>
