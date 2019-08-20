@@ -26,11 +26,74 @@ const routers = [
         component: resolve => require(['./pages/home/home'], resolve)
       },
       {
-        path: '/api/lamp/v1',
+        path: '/standard',
         meta: {
-          title: '个人信息'
+          title: '数据库标准'
         },
-        component: resolve => require(['./pages/user'], resolve)
+        component: resolve => require(['./pages/standard/standard'], resolve)
+      },
+      {
+        path: '/standard-management',
+        meta: {
+          title: '数据库标准管理'
+        },
+        component: resolve => require(['./pages/standard-management/standard-management'], resolve)
+      },
+      {
+        path: '/source',
+        meta: {
+          title: '数据源'
+        },
+        component: resolve => require(['./pages/source/source'], resolve)
+      },
+      {
+        path: '/assets-management',
+        meta: {
+          title: '数据资产管理'
+        },
+        component: resolve => require(['./pages/assets-management/assets-management'], resolve)
+      },
+      {
+        path: '/audit-log',
+        meta: {
+          title: '审计日志'
+        },
+        component: resolve => require(['./pages/audit-log/audit-log'], resolve)
+      },
+      {
+        path: '/plan-list',
+        meta: {
+          title: '任务列表'
+        },
+        component: resolve => require(['./pages/plan-list/plan-list'], resolve)
+      },
+      {
+        path: '/operators',
+        meta: {
+          title: '运营商'
+        },
+        component: resolve => require(['./pages/operators/operators'], resolve)
+      },
+      {
+        path: '/system-application',
+        meta: {
+          title: '系统应用'
+        },
+        component: resolve => require(['./pages/system-application/system-application'], resolve)
+      },
+      {
+        path: '/api-management',
+        meta: {
+          title: '接口管理'
+        },
+        component: resolve => require(['./pages/api-management/api-management'], resolve)
+      },
+      {
+        path: '/api-configuration',
+        meta: {
+          title: '接口配置'
+        },
+        component: resolve => require(['./pages/api-configuration/api-configuration'], resolve)
       }
     ]
   },
