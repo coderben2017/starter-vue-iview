@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-404">
         <Row type="flex" justify="center" align="middle">
             <Col span="24">
                 <h1 style="font-family: STKaiti">页面未找到，请检查地址栏路径</h1>
@@ -23,7 +23,7 @@
 </script>
 
 <style scoped lang="less">
-    .container {
+    .container-404 {
         position: absolute;
         top: 0;
         left: 0;

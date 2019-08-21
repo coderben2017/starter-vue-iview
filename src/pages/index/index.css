@@ -22,11 +22,13 @@
 }
 
 .layout-nav {
-    margin-left: 200px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 170px;
+    position: relative;
 }
 
 .layout-nav div {
-    display: inline-block;
     width: 120px;
     height: 64px;
     line-height: 64px;
@@ -36,7 +38,19 @@
 }
 
 .layout-nav .ivu-icon-md-log-out {
-    float: right;
-    margin-top: 20px;
+    position: absolute;
+    right: 0;
+    top: 20px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 576px) {
+    .ivu-layout-sider-trigger {
+        display: none;
+    }
+}
+@media screen and (max-width: 575px) {
+    .layout-nav .ivu-icon-md-log-out {
+        right: -40px;
+    }
 }

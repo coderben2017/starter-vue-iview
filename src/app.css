@@ -6,6 +6,7 @@
     width: 100%;
     color: #515a6e;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    overflow: auto;
 }
 .flex {display: flex; flex-wrap: nowrap}
 .flex-center {align-items: center; justify-content: center;}
@@ -53,6 +54,13 @@ table .fa-trash, table .wb-stop {color: #ed4014;}
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Modal内容溢出滚动条 */
+@media screen and (max-width: 575px) {
+    .ivu-modal-body {
+        overflow: auto !important;
+    }
 }
 
 /* 滚动条样式 */

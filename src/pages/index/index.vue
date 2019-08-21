@@ -8,6 +8,7 @@
                     </div>
                     <div class="layout-nav">
                         <div
+                            class="overflow-ellipsis"
                             v-for="menu1 in menus"
                             :key="menu1.id"
                             :class="{'active': menu1.id === currentMenu1.id}"
@@ -20,7 +21,13 @@
                 </Menu>
             </Header>
             <Layout>
-                <Sider :style="{background: '#fff', height: '92vh'}">
+                <Sider
+                    collapsible
+                    breakpoint="xs"
+                    :collapsed-width="78"
+                    v-model="isCollapsed"
+                    :style="{background: '#fff', height: '92vh'}"
+                >
                     <Menu theme="light" width="auto" :accordion="true" :active-name="activeName">
                         <MenuGroup
                             v-if="currentMenu1.children"
@@ -70,6 +77,7 @@
   export default {
     data() {
       return {
+        isCollapsed: false,
         menus: [],
         currentMenu1: {id: '', text: '', children: []}
       }
